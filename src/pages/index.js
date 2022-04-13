@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 const Home = ({ data }) => {
 return(
 
-<Layout >
+<Layout>
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <title>ESSENTIALS</title>
