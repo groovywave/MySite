@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 //  const _Header = 
-export default () => {
-    return (
+export default () => (
+    // return (
         <header className="header">
         <div className="container">
         <div className="site">
@@ -32,6 +32,6 @@ export default () => {
         </nav>
         </div>
     </header>
-    )
- }
+    // )
+)
 //  export default _Header;
