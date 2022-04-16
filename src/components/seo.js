@@ -18,23 +18,21 @@ export default props => {
     }
   `)
 
+  const title = props.pagetitle
+    ? `${props.pagetitle} | ${data.site.siteMetadata.title}`
+    : data.site.siteMetadata.title
 
-const title = props.pagetitle
-  ? `${props.pagetitle} | ${data.site.siteMetadata.title}`
-  : data.site.siteMetadata.title
+  const description = props.pagedesc || data.site.siteMetadata.description
 
-const description = props.pagedesc || data.site.siteMetadata.description
+  const url = props.pagepath
+    ? `${data.site.siteMetadata.siteUrl}${props.pagepath}`
+    : data.site.siteMetadata.siteUrl
 
-const url = props.pagepath
-  ? `${data.site.siteMetadata.siteUrl}${props.pagepath}`
-  : data.site.siteMetadata.siteUrl
-
-const imgurl = props.pageimg
-    ? `${data.site.siteMetadata.sitUrl}${props.pageimg}`
+  const imgurl = props.pageimg
+    ? `${data.site.siteMetadata.siteUrl}${props.pageimg}`
     : `${data.site.siteMetadata.siteUrl}/thumb.jpg`
-
-const imgw = props.imgw || 1280
-const imgh = props.pageimgh || 640
+  const imgw = props.pageimgw || 1280
+  const imgh = props.pageimgh || 640
 
   return (
     <Helmet>
@@ -52,12 +50,10 @@ const imgh = props.pageimgh || 640
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="fb:app_id" content={data.site.siteMetadata.fbappid} />
 
-      <meta property="og.image" content={imgurl} />
+      <meta property="og:image" content={imgurl} />
       <meta property="og:image:width" content={imgw} />
       <meta property="og:image:height" content={imgh} />
-
       <meta name="twitter:card" content="summary_large_image" />
-
     </Helmet>
-        )
+  )
 }
