@@ -1,5 +1,6 @@
 import React from "react"
 import {graphql} from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
@@ -13,7 +14,9 @@ export default ({ data}) => (
       <div> */}
         <div className="eyecatch">
           <figure>
-            <img src="images-baseblog/eyecatch.jpg" alt="アイキャッチ画像の説明" />
+              <Img fluid={data.contentfulBlogPost.eyecatch.fluid}
+              alt="アイキャッチ画像の説明"
+              />
           </figure>
         </div>
         <article className="content">
@@ -30,7 +33,7 @@ export default ({ data}) => (
                 <FontAwesomeIcon icon = {faFolderOpen} />
                 <ul>
                     {data.contentfulBlogPost.category.map(cat =>(
-                        <li className={cat.categorySlug}> key={cat.id}
+                        <li className={cat.categorySlug} key={cat.id}> 
                             {cat.category}
                         </li>
                     ))}
@@ -69,7 +72,7 @@ export default ({ data}) => (
     </Layout>
 )
 
-export const query =graphql`
+export const query = graphql`
     query {
         contentfulBlogPost {
             title
@@ -79,6 +82,11 @@ export const query =graphql`
                 category
                 categorySlug
                 id
+            }
+            eyecatch {
+                fluid(maxWidth: 1600){
+                    ...GatsbyContentfulFluid_withWebp
+                }
             }
         }
     }
