@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import { faChevronleft, faChevronRight} from "@fortawesome/free-solid-svg-icons"
 
-export default ({ data}) => (
+export default ({ data }) => (
     <Layout>
         {/* var NewComponent = React.createClass({
   render: function() {
@@ -16,8 +16,8 @@ export default ({ data}) => (
         <div className="eyecatch">
           <figure>
               <GatsbyImage
-              {/* <Img 
-              fluid={data.contentfulBlogPost.eyecatch.fluid} */}
+              // <Img 
+              // fluid={data.contentfulBlogPost.eyecatch.fluid}>
               alt="アイキャッチ画像の説明"
               />
           </figure>
