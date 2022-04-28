@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 
@@ -21,8 +21,8 @@ export default ({ data, location }) => (
     />
     <div className="eyecatch">
       <figure>
-        <Img
-          fluid={data.about.childImageSharp.fluid}
+        <GatsbyImage
+          image={getImage(data.about.childImageSharp.eyecatch)}
           alt="ブルーベリー＆ヨーグルト"
         />
       </figure>
@@ -70,9 +70,7 @@ export const query = graphql`
   query {
     about: file(relativePath: { eq: "about.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1600) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
         original {
           src
           height
