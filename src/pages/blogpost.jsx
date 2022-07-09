@@ -1,23 +1,17 @@
 import React from "react"
 import {graphql} from "gatsby"
-// import Img from "gatsby-image"
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from "../components/layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import { faChevronleft, faChevronRight} from "@fortawesome/free-solid-svg-icons"
 
-export default ({ data}) => (
-    <Layout>
-        {/* var NewComponent = React.createClass({
-  render: function() {
-    return (
-      <div> */}
+export default ({ data }) => (
+  <Layout>
         <div className="eyecatch">
           <figure>
               <GatsbyImage
-              {/* <Img 
-              fluid={data.contentfulBlogPost.eyecatch.fluid} */}
+              image = {getImage(data.contentfulBlogPost.eyecatch)}
               alt="アイキャッチ画像の説明"
               />
           </figure>
@@ -27,7 +21,6 @@ export default ({ data}) => (
             <h1 className="bar">{data.contentfulBlogPost.title}</h1>
             <aside className="info">
                 <time dateTime={data.contentfulBlogPost.publishDate}>
-                  {/* <i className="far fa-clock" />XXXX年XX月XX日 */}
                   <FontAwesomeIcon icon={faClock} />
                   {data.contentfulBlogPost.publishDateJP}
                 </time>
@@ -53,7 +46,6 @@ export default ({ data}) => (
             <ul className="postlink">
               <li className="prev">
                 <a href="base-blogpost.html" rel="prev">
-                  {/* <i className="fas fa-chevron-left" /> */}
                   <FontAwesomeIcon icon = {faChevronleft} />
                   <span>前の記事</span>
                 </a>
@@ -61,18 +53,13 @@ export default ({ data}) => (
               <li className="next">
                 <a href="base-blogpost.html" rel="next">
                   <span>次の記事</span>
-                  {/* <i className="fas fa-chevron-right" /> */}
                   <FontAwesomeIcon icon = {faChevronRight} />
                 </a>
               </li>
             </ul>
           </div>
         </article>
-      {/* </div>
-    );
-  }
-}); */}
-    </Layout>
+  </Layout>
 )
 
 export const query = graphql`

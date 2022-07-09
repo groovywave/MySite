@@ -1,25 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage} from "gatsby-plugin-image"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 // export default 
 const Home = ({ data }) => {
 return(
 
 <Layout>
-  <SEO />
-  {/* <meta charSet="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>ESSENTIALS</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossOrigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="images/icon.png" type="image/png" /> */}
+  <Seo />
   <section className="hero">
     <figure>
-      <Img fluid = {data.hero.childImageSharp.fluid} alt=""
-      style={{height: "100%"}}
+      <GatsbyImage 
+        image={getImage(data.hero.childImageSharp)}
+        alt=""
+        style={{height: "100%"}}
       />
     </figure>
     <div className="catch">
@@ -47,7 +43,10 @@ return(
       <div className="details">
         <div className="detail">
           <figure>
-          <Img fixed = {data.fruit.childImageSharp.fixed} alt=""/>
+            <GatsbyImage 
+              image={getImage(data.fruit.childImageSharp)}
+              alt=""
+            /> 
           </figure>
           <h3>フルーツ</h3>
           <p>FRUIT</p>
@@ -58,7 +57,9 @@ return(
         </div>
         <div className="detail">
           <figure>
-          <Img fixed = {data.grain.childImageSharp.fixed} alt=""/>
+          <GatsbyImage 
+            imge = {getImage(data.grain.childImageSharp)}
+            alt=""/>
           </figure>
           <h3>穀物</h3>
           <p>GRAIN</p>
@@ -66,7 +67,9 @@ return(
         </div>
         <div className="detail">
           <figure>
-          <Img fixed = {data.beverage.childImageSharp.fixed} alt=""/>
+          <GatsbyImage 
+            image = {getImage(data.beverage.childImageSharp)}
+            alt=""/>
           </figure>
           <h3>飲み物</h3>
           <p>BEVERAGE</p>
@@ -78,8 +81,9 @@ return(
   <section className="photo">
     <h2 className="sr-only">Photo</h2>
     <figure>
-    <Img
-      fluid = {data.berry.childImageSharp.fluid} alt="赤く熟したベリー"
+      <GatsbyImage 
+        image={getImage(data.berry.childImageSharp)}
+        alt="赤く熟したベリー"
       style = {{height: "100%"}}
     />
     </figure>
@@ -94,44 +98,38 @@ export const query = graphql`
   query  {
     hero: file(relativePath: {eq: "hero.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1600) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+        )
       }
     }
     fruit: file(relativePath: {eq: "fruit.jpg"}) {
       childImageSharp {
-        fixed(width: 200) {
-          ...GatsbyImageSharpFixed_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+        )
       }
     }
     grain: file(relativePath: {eq: "grain.jpg"}) {
       childImageSharp {
-        fixed(width: 200) {
-          ...GatsbyImageSharpFixed_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+        )
       }
     }
     beverage: file(relativePath: {eq: "beverage.jpg"}) {
       childImageSharp {
-        fixed(width: 200) {
-          ...GatsbyImageSharpFixed_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+        )
       }
     }
     berry: file(relativePath: {eq: "berry.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 320) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+        )
       }
     }
     pattern: file(relativePath: {eq: "pattern.jpg"}) {
       childImageSharp {
-        fluid(maxWidth: 1920, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
+        )
       }
     }
   }

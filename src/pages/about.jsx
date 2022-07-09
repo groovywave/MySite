@@ -1,17 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImageFixedProps, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUtensils, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
 
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 export default ({ data, location }) => (
   <Layout>
-    <SEO
+    <Seo
       pagetitle="ESSENTIALS について"
       pagedesc=" 食べ物についての情報を発信しているサイトです。"
       pagepath={location.pathname}
@@ -21,8 +21,8 @@ export default ({ data, location }) => (
     />
     <div className="eyecatch">
       <figure>
-        <Img
-          fluid={data.about.childImageSharp.fluid}
+      <GatsbyImage
+          image={getImage(data.about.childImageSharp.eyecatch)}
           alt="ブルーベリー＆ヨーグルト"
         />
       </figure>
@@ -70,9 +70,7 @@ export const query = graphql`
   query {
     about: file(relativePath: { eq: "about.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1600) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
         original {
           src
           height
